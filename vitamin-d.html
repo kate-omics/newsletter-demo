@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
 
@@ -9,19 +8,23 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Vitamin D Newsletter | PhoenixAI Health Newsletter</title>
+    <title>Vitamin D Newsletter | Phoenix AI Health Insights</title>
 
     <meta
         name="description"
-        content="An educational newsletter about vitamin D, its functions, sources, recommended intake, and risk factors."
+        content="Read the Phoenix AI educational newsletter about vitamin D, including its health role, food sources, risk factors, and laboratory testing."
     >
 
-    <!-- LinkedIn and social-media preview information -->
-    <meta property="og:title" content="Vitamin D: The Sunshine Vitamin">
+    <!-- Social-media link preview information -->
+
+    <meta
+        property="og:title"
+        content="Vitamin D: The Sunshine Vitamin | Phoenix AI"
+    >
 
     <meta
         property="og:description"
-        content="Learn about vitamin D, recommended intake, food sources, risk factors, and laboratory results."
+        content="Learn about vitamin D, its health role, dietary sources, risk factors, and laboratory testing."
     >
 
     <meta
@@ -32,111 +35,326 @@
     <meta property="og:type" content="article">
 
     <style>
+        :root {
+            --primary: #087f8c;
+            --primary-dark: #075d68;
+            --secondary: #20a89f;
+            --background: #edf3f4;
+            --surface: #ffffff;
+            --text-dark: #17384a;
+            --text-medium: #5d717b;
+            --border: #dfe9eb;
+        }
+
         * {
             box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
-            background: #eef3f4;
-            color: #17384a;
+            background: var(--background);
+            color: var(--text-dark);
         }
 
-        .topbar {
-            background: white;
-            padding: 18px 24px;
-            border-bottom: 1px solid #d8e1e4;
+        /* Navigation */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.97);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(10px);
         }
 
-        .topbar-content {
-            width: 94%;
-            max-width: 1100px;
+        .navbar-inner {
+            width: 92%;
+            max-width: 1150px;
+            min-height: 76px;
             margin: auto;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 20px;
+            gap: 24px;
         }
 
-        .site-name {
-            margin: 0;
-            font-size: 1.25rem;
-            color: #087f8c;
-        }
-
-        .home-link {
-            color: #087f8c;
-            font-weight: bold;
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             text-decoration: none;
         }
 
-        .home-link:hover {
+        .brand-logo {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+
+        .brand-text {
+            color: var(--primary-dark);
+            font-size: 1.08rem;
+            font-weight: 800;
+        }
+
+        .back-link {
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-weight: 800;
+        }
+
+        .back-link:hover {
             text-decoration: underline;
         }
 
-        main {
-            width: 94%;
-            max-width: 1100px;
-            margin: 35px auto;
+        /* Page header */
+
+        .page-header {
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(255, 255, 255, 0.18),
+                    transparent 34%
+                ),
+                linear-gradient(
+                    135deg,
+                    var(--primary-dark),
+                    var(--primary),
+                    var(--secondary)
+                );
+            color: white;
+            padding: 68px 24px;
+            text-align: center;
         }
 
-        .newsletter-wrapper {
-            background: white;
-            padding: 14px;
-            border-radius: 16px;
-            box-shadow: 0 8px 30px rgba(16, 53, 67, 0.12);
+        .page-header-content {
+            width: 92%;
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .category {
+            display: inline-block;
+            padding: 8px 13px;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            background: rgba(255, 255, 255, 0.13);
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 18px;
+        }
+
+        .page-header h1 {
+            margin: 0;
+            font-size: clamp(2.4rem, 6vw, 4.3rem);
+            line-height: 1.1;
+        }
+
+        .page-header p {
+            max-width: 680px;
+            margin: 18px auto 0;
+            color: rgba(255, 255, 255, 0.92);
+            font-size: 1.08rem;
+            line-height: 1.7;
+        }
+
+        /* Newsletter display */
+
+        main {
+            width: 94%;
+            max-width: 1150px;
+            margin: 42px auto 70px;
+        }
+
+        .newsletter-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 15px;
+            box-shadow: 0 14px 42px rgba(24, 64, 76, 0.13);
         }
 
         .newsletter-image {
             display: block;
             width: 100%;
             height: auto;
-            border-radius: 10px;
+            border-radius: 12px;
         }
 
-        .actions {
-            margin-top: 22px;
-            text-align: center;
+        .action-bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 26px;
         }
 
         .button {
             display: inline-block;
-            background: #087f8c;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
+            padding: 13px 20px;
+            border-radius: 9px;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 800;
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease;
         }
 
-        .button:hover {
-            background: #056873;
+        .primary-button {
+            background: var(--primary);
+            color: white;
         }
+
+        .primary-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .secondary-button {
+            background: white;
+            color: var(--primary-dark);
+            border: 1px solid #bdd4d8;
+        }
+
+        .secondary-button:hover {
+            background: #f3f8f9;
+            transform: translateY(-2px);
+        }
+
+        /* Information section */
+
+        .information {
+            margin-top: 38px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .info-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 26px;
+        }
+
+        .info-card h2 {
+            margin: 0 0 12px;
+            color: var(--text-dark);
+            font-size: 1.35rem;
+        }
+
+        .info-card p {
+            margin: 0;
+            color: var(--text-medium);
+            line-height: 1.75;
+        }
+
+        /* Footer */
 
         footer {
-            width: 94%;
-            max-width: 900px;
-            margin: 25px auto 40px;
-            text-align: center;
-            color: #61747c;
-            font-size: 0.9rem;
-            line-height: 1.5;
+            background: #113f4e;
+            color: white;
+            padding: 40px 24px;
         }
 
-        @media (max-width: 600px) {
-            .topbar-content {
-                align-items: flex-start;
-                flex-direction: column;
+        .footer-inner {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+
+        .footer-logo {
+            width: 34px;
+            height: 34px;
+            object-fit: contain;
+        }
+
+        .footer-inner p {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+
+        .disclaimer {
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 0.88rem;
+            max-width: 780px;
+            margin: 14px auto 0;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 760px) {
+            .navbar-inner {
+                min-height: 68px;
+            }
+
+            .brand-logo {
+                width: 40px;
+                height: 40px;
+            }
+
+            .brand-text {
+                font-size: 0.94rem;
+            }
+
+            .page-header {
+                padding: 55px 20px;
             }
 
             main {
-                margin-top: 20px;
+                margin-top: 24px;
             }
 
-            .newsletter-wrapper {
+            .newsletter-card {
                 padding: 6px;
+                border-radius: 12px;
+            }
+
+            .newsletter-image {
                 border-radius: 8px;
+            }
+
+            .information {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .navbar-inner {
+                gap: 10px;
+            }
+
+            .back-link {
+                font-size: 0.86rem;
+            }
+
+            .page-header h1 {
+                font-size: 2.35rem;
+            }
+
+            .action-bar {
+                flex-direction: column;
+            }
+
+            .button {
+                width: 100%;
+                text-align: center;
             }
         }
     </style>
@@ -144,36 +362,65 @@
 
 <body>
 
-    <header class="topbar">
-        <div class="topbar-content">
+    <nav class="navbar">
+        <div class="navbar-inner">
 
-            <p class="site-name">
-                PhoenixAI Health Newsletter
-            </p>
+            <a class="brand" href="index.html">
 
-            <a class="home-link" href="index.html">
-                ← View all newsletters
+                <img
+                    class="brand-logo"
+                    src="images/phoenix-logo.png"
+                    alt="Phoenix AI logo"
+                >
+
+                <span class="brand-text">
+                    Phoenix AI Health Insights
+                </span>
+
+            </a>
+
+            <a class="back-link" href="index.html">
+                ← All newsletters
             </a>
 
         </div>
+    </nav>
+
+    <header class="page-header">
+
+        <div class="page-header-content">
+
+            <span class="category">
+                Biomarker spotlight
+            </span>
+
+            <h1>Vitamin D</h1>
+
+            <p>
+                Explore the role of vitamin D, common sources, possible risk
+                factors for low levels, and how vitamin D is measured.
+            </p>
+
+        </div>
+
     </header>
 
     <main>
 
-        <div class="newsletter-wrapper">
+        <section class="newsletter-card">
 
             <img
                 class="newsletter-image"
                 src="images/vitamin-d-newsletter.png"
-                alt="Vitamin D educational health newsletter"
+                alt="Phoenix AI educational newsletter about vitamin D"
             >
 
-        </div>
+        </section>
 
-        <div class="actions">
+        <div class="action-bar">
 
             <a
-                class="button"
+                class="button primary-button"
                 href="images/vitamin-d-newsletter.png"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -181,16 +428,77 @@
                 Open full-size newsletter
             </a>
 
+            <a
+                class="button secondary-button"
+                href="index.html"
+            >
+                Browse other newsletters
+            </a>
+
         </div>
+
+        <section class="information">
+
+            <article class="info-card">
+
+                <h2>About this newsletter</h2>
+
+                <p>
+                    This educational resource introduces vitamin D in an
+                    accessible format and summarizes its biological role,
+                    potential sources, and commonly discussed risk factors.
+                </p>
+
+            </article>
+
+            <article class="info-card">
+
+                <h2>Important note</h2>
+
+                <p>
+                    Laboratory results should be interpreted using the
+                    laboratory's stated reference interval and the individual's
+                    health context. Speak with a qualified healthcare
+                    professional before beginning or changing supplementation.
+                </p>
+
+            </article>
+
+        </section>
 
     </main>
 
     <footer>
-        This newsletter is provided for educational purposes only and
-        is not a substitute for professional medical advice, diagnosis,
-        or treatment.
+
+        <div class="footer-inner">
+
+            <div class="footer-brand">
+
+                <img
+                    class="footer-logo"
+                    src="images/phoenix-logo.png"
+                    alt=""
+                >
+
+                <span>Phoenix AI Health Insights</span>
+
+            </div>
+
+            <p>
+                © 2026 Phoenix AI. All rights reserved.
+            </p>
+
+            <p class="disclaimer">
+                This content is provided for general educational purposes only
+                and is not a substitute for professional medical advice,
+                diagnosis, or treatment. Always consult a qualified healthcare
+                professional regarding personal laboratory results, symptoms,
+                supplements, or health concerns.
+            </p>
+
+        </div>
+
     </footer>
 
 </body>
-
 </html>
