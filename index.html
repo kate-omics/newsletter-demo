@@ -3,101 +3,459 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>Saniya's Health Newsletter</title>
 
+    <meta
+        name="description"
+        content="A collection of evidence-based health newsletters covering biomarkers, nutrition, and wellness."
+    >
+
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
-            background: #f5f7fa;
+            background: #f3f7f8;
+            color: #17384a;
         }
 
         header {
-            background: linear-gradient(90deg, #0b7a75, #3bb4a1);
+            background: linear-gradient(135deg, #0b6674, #159e9a);
             color: white;
+            padding: 70px 24px;
             text-align: center;
-            padding: 50px;
         }
 
-        h1 {
+        .header-content {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        header h1 {
             margin: 0;
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            line-height: 1.1;
         }
 
-        .container {
-            width: 90%;
-            max-width: 1000px;
-            margin: 40px auto;
+        header p {
+            max-width: 650px;
+            margin: 18px auto 0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.92);
         }
 
-        .card {
+        nav {
             background: white;
-            padding: 25px;
-            margin-bottom: 25px;
-            border-radius: 12px;
-            box-shadow: 0px 5px 15px rgba(0,0,0,0.08);
+            border-bottom: 1px solid #dce6e8;
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
 
-        .card h2 {
-            margin-top: 0;
-            color: #0b7a75;
+        .nav-content {
+            max-width: 1100px;
+            margin: auto;
+            padding: 14px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .site-name {
+            color: #0b6674;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-link {
+            color: #3f5964;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .nav-link:hover {
+            color: #0b7d85;
+        }
+
+        main {
+            width: 92%;
+            max-width: 1100px;
+            margin: 55px auto;
+        }
+
+        .section-heading {
+            margin-bottom: 28px;
+        }
+
+        .section-heading h2 {
+            margin: 0 0 8px;
+            color: #123f50;
+            font-size: 2rem;
+        }
+
+        .section-heading p {
+            margin: 0;
+            color: #617681;
+            line-height: 1.6;
+        }
+
+        .newsletter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+        }
+
+        .newsletter-card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(28, 73, 86, 0.1);
+            border: 1px solid #e4ecee;
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .newsletter-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 38px rgba(28, 73, 86, 0.15);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            object-position: top;
+            display: block;
+            background: #eaf2f3;
+        }
+
+        .card-content {
+            padding: 24px;
+        }
+
+        .category {
+            display: inline-block;
+            background: #e8f7f5;
+            color: #0b7d79;
+            padding: 7px 11px;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 14px;
+        }
+
+        .card-content h3 {
+            margin: 0;
+            color: #123f50;
+            font-size: 1.45rem;
+            line-height: 1.3;
+        }
+
+        .card-content p {
+            color: #5d717b;
+            line-height: 1.65;
+            margin: 14px 0 20px;
         }
 
         .button {
             display: inline-block;
-            margin-top: 15px;
-            background: #0b7a75;
+            background: #0b7d85;
             color: white;
+            padding: 12px 18px;
+            border-radius: 9px;
             text-decoration: none;
-            padding: 10px 18px;
-            border-radius: 8px;
+            font-weight: bold;
+            transition: background 0.2s ease;
         }
 
         .button:hover {
-            background: #06615d;
+            background: #075f66;
+        }
+
+        .coming-soon {
+            background: #e9eef0;
+            color: #6a7b83;
+            cursor: default;
+        }
+
+        .coming-soon:hover {
+            background: #e9eef0;
+        }
+
+        .about-section {
+            margin-top: 65px;
+            background: white;
+            border-radius: 18px;
+            padding: 35px;
+            box-shadow: 0 8px 24px rgba(28, 73, 86, 0.08);
+        }
+
+        .about-section h2 {
+            margin-top: 0;
+            color: #123f50;
+        }
+
+        .about-section p {
+            color: #5d717b;
+            line-height: 1.7;
+            margin-bottom: 0;
         }
 
         footer {
+            background: #103f4e;
+            color: white;
+            margin-top: 70px;
+            padding: 35px 24px;
             text-align: center;
-            padding: 30px;
-            color: gray;
+        }
+
+        footer p {
+            margin: 7px 0;
+            line-height: 1.5;
+        }
+
+        .disclaimer {
+            max-width: 780px;
+            margin: 14px auto 0;
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.88rem;
+        }
+
+        @media (max-width: 650px) {
+            header {
+                padding: 55px 20px;
+            }
+
+            .nav-content {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            main {
+                margin-top: 38px;
+            }
+
+            .card-image {
+                height: 190px;
+            }
+
+            .about-section {
+                padding: 26px;
+            }
         }
     </style>
-
 </head>
 
 <body>
 
-<header>
+    <nav>
+        <div class="nav-content">
 
-<h1>🏥 Saniya's Health Newsletter</h1>
+            <a class="site-name" href="index.html">
+                Saniya's Health Newsletter
+            </a>
 
-<p>Evidence-based health education made simple.</p>
+            <a class="nav-link" href="#latest">
+                Latest newsletters
+            </a>
 
-</header>
+        </div>
+    </nav>
 
-<div class="container">
+    <header>
+        <div class="header-content">
 
-<div class="card">
+            <h1>Health information made easier to understand</h1>
 
-<h2>🧬 Vitamin D: The Sunshine Vitamin</h2>
+            <p>
+                Explore clear, evidence-based newsletters about biomarkers,
+                nutrition, laboratory results, and preventive health.
+            </p>
 
-<p>
-Learn why Vitamin D is essential, signs of deficiency,
-food sources, and how to understand your blood test results.
-</p>
+        </div>
+    </header>
 
-<a class="button" href="vitamin-d.html">Read Newsletter →</a>
+    <main>
 
-</div>
+        <section id="latest">
 
-</div>
+            <div class="section-heading">
 
-<footer>
+                <h2>Latest newsletters</h2>
 
-© 2026 Saniya's Health Newsletter
+                <p>
+                    Browse educational health resources designed to make
+                    scientific and laboratory information easier to understand.
+                </p>
 
-</footer>
+            </div>
+
+            <div class="newsletter-grid">
+
+                <article class="newsletter-card">
+
+                    <img
+                        class="card-image"
+                        src="images/vitamin-d-newsletter.png"
+                        alt="Preview of the Vitamin D health newsletter"
+                    >
+
+                    <div class="card-content">
+
+                        <span class="category">
+                            Biomarker spotlight
+                        </span>
+
+                        <h3>
+                            Vitamin D: The Sunshine Vitamin
+                        </h3>
+
+                        <p>
+                            Learn why vitamin D matters, who may be at greater
+                            risk of low levels, common food sources, recommended
+                            intake, and how vitamin D laboratory results are
+                            generally interpreted.
+                        </p>
+
+                        <a
+                            class="button"
+                            href="vitamin-d.html"
+                        >
+                            Read newsletter →
+                        </a>
+
+                    </div>
+
+                </article>
+
+                <article class="newsletter-card">
+
+                    <div
+                        class="card-image"
+                        style="
+                            display:flex;
+                            align-items:center;
+                            justify-content:center;
+                            font-size:4rem;
+                        "
+                    >
+                        🩸
+                    </div>
+
+                    <div class="card-content">
+
+                        <span class="category">
+                            Coming soon
+                        </span>
+
+                        <h3>
+                            Understanding HbA1c
+                        </h3>
+
+                        <p>
+                            A simple explanation of what HbA1c measures,
+                            how it differs from a single glucose reading,
+                            and why it is commonly used in metabolic health.
+                        </p>
+
+                        <span class="button coming-soon">
+                            Coming soon
+                        </span>
+
+                    </div>
+
+                </article>
+
+                <article class="newsletter-card">
+
+                    <div
+                        class="card-image"
+                        style="
+                            display:flex;
+                            align-items:center;
+                            justify-content:center;
+                            font-size:4rem;
+                        "
+                    >
+                        ❤️
+                    </div>
+
+                    <div class="card-content">
+
+                        <span class="category">
+                            Coming soon
+                        </span>
+
+                        <h3>
+                            Cholesterol and Heart Health
+                        </h3>
+
+                        <p>
+                            Understand LDL, HDL, triglycerides, and how
+                            cholesterol results contribute to an overall
+                            cardiovascular health assessment.
+                        </p>
+
+                        <span class="button coming-soon">
+                            Coming soon
+                        </span>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+        <section class="about-section">
+
+            <h2>About this newsletter library</h2>
+
+            <p>
+                This website is a personal demonstration project exploring
+                how public health education content can be presented through
+                a simple GitHub Pages website. Each newsletter is designed
+                to explain health and biomarker topics in accessible language.
+            </p>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        <p>
+            © 2026 Saniya's Health Newsletter
+        </p>
+
+        <p class="disclaimer">
+            This content is provided for general educational purposes only
+            and is not a substitute for professional medical advice,
+            diagnosis, or treatment. Always consult a qualified healthcare
+            professional regarding personal laboratory results or health concerns.
+        </p>
+
+    </footer>
 
 </body>
 
