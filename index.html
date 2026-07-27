@@ -266,6 +266,39 @@
             font-size: 4.5rem;
         }
 
+        .vitamin-d-cover {
+            position: relative;
+            flex-direction: column;
+            gap: 12px;
+            overflow: hidden;
+        }
+
+        .vitamin-d-cover::before {
+            content: "";
+            position: absolute;
+            width: 165px;
+            height: 165px;
+            border-radius: 50%;
+            background: rgba(255, 193, 7, 0.18);
+        }
+
+        .vitamin-d-icon {
+            position: relative;
+            z-index: 2;
+            font-size: 5rem;
+            line-height: 1;
+        }
+
+        .vitamin-d-label {
+            position: relative;
+            z-index: 2;
+            color: var(--text-dark);
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
         .card-content {
             padding: 26px;
         }
@@ -466,7 +499,40 @@
                 font-size: 2.3rem;
             }
 
-            .card-content {
+            .vitamin-d-cover {
+            position: relative;
+            flex-direction: column;
+            gap: 12px;
+            overflow: hidden;
+        }
+
+        .vitamin-d-cover::before {
+            content: "";
+            position: absolute;
+            width: 165px;
+            height: 165px;
+            border-radius: 50%;
+            background: rgba(255, 193, 7, 0.18);
+        }
+
+        .vitamin-d-icon {
+            position: relative;
+            z-index: 2;
+            font-size: 5rem;
+            line-height: 1;
+        }
+
+        .vitamin-d-label {
+            position: relative;
+            z-index: 2;
+            color: var(--text-dark);
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .card-content {
                 padding: 22px;
             }
         }
@@ -548,11 +614,15 @@
 
                 <article class="newsletter-card">
 
-                    <img
-                        class="newsletter-image"
-                        src="images/vitamind.png"
-                        alt="Preview of the Phoenix AI Vitamin D newsletter"
-                    >
+                    <div class="placeholder-image vitamin-d-cover">
+                        <span class="vitamin-d-icon" role="img" aria-label="Sun">
+                            ☀️
+                        </span>
+
+                        <span class="vitamin-d-label">
+                            Vitamin D
+                        </span>
+                    </div>
 
                     <div class="card-content">
 
